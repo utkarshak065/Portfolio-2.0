@@ -40,7 +40,7 @@ const techIcons = {
 
 
 // ================= FETCH DATA =================
-fetch('http://localhost:5000/api/portfolio')
+fetch('data.json?v=' + new Date().getTime())
   .then(res => res.json())
   .then(data => {
 

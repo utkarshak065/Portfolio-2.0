@@ -1,0 +1,38 @@
+{
+  "name": "Utkarsh Ojha",
+  "role": "Machine Learning Engineer",
+  "email": "ojhautkarsh917@gmail.com",
+  "phone": "+91-8920811065",
+  "location": "Greater Noida, India",
+
+  "about": "Motivated Computer Science Engineering student with strong foundation in data structures and algorithms. Skilled in Java, Python, and AI/ML.",
+
+  "skills": [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "Python",
+    "Machine Learning",
+    "Deep Learning",
+    "Git"
+  ],
+
+  "projects": [
+    {
+      "title": "Deepfake Detection",
+      "desc": "AI model to detect fake media",
+      "details": "Uses CNN for deepfake detection",
+      "github": "#",
+      "live": "#",
+      "tech": ["Python", "TensorFlow", "CNN"]
+    },
+    {
+      "title": "Employee Salary Prediction",
+      "desc": "Predict salaries using ML",
+      "details": "Regression model for salary prediction",
+      "github": "#",
+      "live": "#",
+      "tech": ["Python", "Scikit-learn"]
+    }
+  ]
+}
