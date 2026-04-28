@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Utkarsh Portfolio</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+
+  <!-- Lenis Smooth Scroll -->
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.5/bundled/lenis.min.js"></script>
+</head>
+
+<body>
+
+<!-- ================= LOADER ================= -->
+<div id="loader">
+  <div class="loader-text">Loading Portfolio...</div>
+</div>
+
+<!-- ================= PARTICLES ================= -->
+<canvas id="particles"></canvas>
+
+<div class="container">
+
+  <!-- ================= SIDEBAR ================= -->
+  <div class="sidebar">
+    <img src="images/1.jpeg" class="profile">
+    <h2 id="name">Loading...</h2>
+    <p class="role" id="role"></p>
+
+    <p id="typing" class="typing"></p>
+
+    <div class="info">
+      <p id="email"></p>
+      <p id="phone"></p>
+      <p id="location"></p>
+    </div>
+
+    <a href="resume.pdf" download class="btn">Download Resume</a>
+
+    <div class="socials">
+      <a href="#" id="github"><i class="fab fa-github"></i></a>
+      <a href="#" id="linkedin"><i class="fab fa-linkedin"></i></a>
+      <a href="#" id="instagram"><i class="fab fa-instagram"></i></a>
+    </div>
+  </div>
+
+
+  <!-- ================= MAIN ================= -->
+  <div class="main">
+
+    <div id="page">
+
+      <!-- NAVBAR -->
+      <div class="navbar">
+        <a href="#hero">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <button id="themeToggle">🌙</button>
+      </div>
+
+      <!-- ================= HERO ================= -->
+      <section id="hero">
+        <h1>Hi, I'm <span id="heroName">Utkarsh Ojha</span></h1>
+        <p class="hero-sub">Machine Learning Engineer • Web Developer</p>
+      </section>
+
+      <!-- ================= STATS ================= -->
+      <section id="stats">
+        <div class="stat">
+          <h2>2</h2>
+          <p>Projects</p>
+        </div>
+        <div class="stat">
+          <h2>4</h2>
+          <p>Technologies</p>
+        </div>
+        <div class="stat">
+          <h2>2</h2>
+          <p>Internships</p>
+        </div>
+      </section>
+
+      <!-- ================= ABOUT ================= -->
+      <section id="about">
+        <h2>About Me</h2>
+        <p id="aboutText"></p>
+      </section>
+
+      <!-- ================= SKILLS ================= -->
+      <section id="skills">
+        <h2>Skills</h2>
+        <div id="skillsContainer" class="grid"></div>
+      </section>
+
+      <!-- ================= EDUCATION ================= -->
+      <section id="education">
+        <h2>Education</h2>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="dot"></div>
+            <div class="content">
+              <h3>B.Tech - CSE</h3>
+              <p>IILM University (2023 - 2027)</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="dot"></div>
+            <div class="content">
+              <h3>Class XII</h3>
+              <p>74% - Methodist High School</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="dot"></div>
+            <div class="content">
+              <h3>Class X</h3>
+              <p>88.3% - U.P Kirana Seva Samiti Vidyalaya</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= PROJECTS ================= -->
+      <section id="projects">
+        <h2>Projects</h2>
+        <div id="projectsContainer" class="grid"></div>
+      </section>
+
+      <!-- ================= CONTACT ================= -->
+      <section id="contact">
+        <h2>Contact</h2>
+
+        <form id="contactForm">
+          <input type="text" placeholder="Your Name" required>
+          <input type="email" placeholder="Your Email" required>
+          <textarea placeholder="Message" required></textarea>
+          <button type="submit">Send Message</button>
+        </form>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<!-- ================= MODAL ================= -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span id="close">&times;</span>
+    <h2 id="modalTitle"></h2>
+    <p id="modalDesc"></p>
+    <div id="modalLinks"></div>
+  </div>
+</div>
+
+<!-- ================= CHATBOT ================= -->
+<div id="chatbot">
+  <div id="chatHeader">💬 Ask Me</div>
+  <div id="chatBody"></div>
+  <input id="chatInput" placeholder="Ask about projects...">
+</div>
+
+<!-- Cursor -->
+<div class="cursor"></div>
+<div class="cursor-ring"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
