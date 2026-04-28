@@ -1,12 +1,25 @@
-// ================= LOADER =================
+// ================= PREMIUM LOADER =================
 window.addEventListener("load", () => {
   const loader = document.getElementById("loader");
 
   setTimeout(() => {
     loader.style.opacity = "0";
-    loader.style.transition = "0.6s";
-    setTimeout(() => loader.style.display = "none", 600);
-  }, 1000);
+    loader.style.transition = "0.8s ease";
+
+    setTimeout(() => {
+      loader.style.display = "none";
+      document.body.style.overflow = "auto";
+
+      // 🔥 Smooth entry animation
+      gsap.from(".main", {
+        opacity: 0,
+        y: 50,
+        duration: 1
+      });
+
+    }, 800);
+
+  }, 1500);
 });
 
 
@@ -40,7 +53,7 @@ const techIcons = {
 
 
 // ================= FETCH DATA =================
-fetch('data.json?v=' + new Date().getTime())
+fetch('data.json?v=' + Date.now())
   .then(res => res.json())
   .then(data => {
 
@@ -51,6 +64,9 @@ fetch('data.json?v=' + new Date().getTime())
     document.getElementById('phone').innerText = "📱 " + data.phone;
     document.getElementById('location').innerText = "📍 " + data.location;
     document.getElementById('aboutText').innerText = data.about;
+
+    // ===== HERO NAME SYNC =====
+    document.getElementById('heroName').innerText = data.name;
 
     // ===== TYPING =====
     const typingText = "Machine Learning Engineer • Web Developer";
@@ -90,7 +106,7 @@ fetch('data.json?v=' + new Date().getTime())
       skillsDiv.appendChild(card);
     });
 
-    // ===== PROJECTS (UPDATED 🔥) =====
+    // ===== PROJECTS =====
     const projectDiv = document.getElementById('projectsContainer');
 
     data.projects.forEach(proj => {
@@ -136,8 +152,9 @@ fetch('data.json?v=' + new Date().getTime())
 
     // ===== SOCIAL LINKS =====
     document.getElementById('github').href = "https://github.com/utkarshak065";
-    document.getElementById('linkedin').href = "https://www.linkedin.com/in/utkarsh-ojha-2bba73304?utm_source=share_via&utm_content=profile&utm_medium=member_android";
-    document.getElementById('instagram').href = "https://www.instagram.com/utkarshh_ojha?igsh=MTVsb3VtNjdiYmZ1cg==";
+    document.getElementById('linkedin').href = "https://www.linkedin.com/in/utkarsh-ojha-2bba73304";
+    document.getElementById('instagram').href = "https://www.instagram.com/utkarshh_ojha";
+
   })
   .catch(err => console.error("Error:", err));
 
@@ -160,9 +177,9 @@ gsap.utils.toArray("section").forEach(sec => {
 
 // ================= PARTICLES =================
 const canvas = document.getElementById("particles");
-const ctx = canvas.getContext("2d");
+const ctx = canvas?.getContext("2d");
 
-if (canvas) {
+if (canvas && ctx) {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 

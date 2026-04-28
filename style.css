@@ -1,3 +1,18 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
 /* ===== ROOT COLORS ===== */
 :root {
   --primary: #a855f7;
@@ -8,30 +23,66 @@
 
 /* ===== GLOBAL ===== */
 body {
-  margin: 0;
   font-family: 'Segoe UI', sans-serif;
   background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
   color: var(--text);
 
-  font-size: 18px;              /* 🔥 INCREASED */
+  font-size: 18px;
   line-height: 1.7;
   scroll-behavior: smooth;
+
+  overflow-x: hidden;
+  overflow-y: hidden; /* 🔥 prevents jump before loader ends */
 }
 
-/* ===== TEXT SCALE (BIG + CLEAN) ===== */
-h1 {
-  font-size: 44px;
+/* ===== PARTICLES FIX (VERY IMPORTANT) ===== */
+#particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* 🔥 prevents pushing layout */
+}
+
+/* ===== LOADER ===== */
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: radial-gradient(circle, #0f0c29, #02010a);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  z-index: 9999;
+}
+
+.loader-text {
+  font-size: 34px;
   font-weight: 700;
+
+  background: linear-gradient(90deg, #a855f7, #ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: glow 1.5s infinite alternate;
 }
 
-h2 {
-  font-size: 30px;
-  font-weight: 600;
+@keyframes glow {
+  from { transform: scale(1); opacity: 0.6; }
+  to { transform: scale(1.15); opacity: 1; }
 }
 
-h3 {
-  font-size: 20px;
-}
+/* ===== TEXT SCALE ===== */
+h1 { font-size: 48px; }
+h2 { font-size: 32px; }
+h3 { font-size: 20px; }
 
 p {
   font-size: 17px;
@@ -43,6 +94,7 @@ p {
   display: flex;
   gap: 20px;
   padding: 20px;
+  margin-top: 0; /* 🔥 FIX */
 }
 
 /* ===== SIDEBAR ===== */
@@ -62,7 +114,6 @@ p {
 
   position: sticky;
   top: 20px;
-
   transition: 0.4s;
 }
 
@@ -84,22 +135,15 @@ p {
   box-shadow:
     0 0 25px #a855f7,
     0 0 50px rgba(168,85,247,0.6);
-
-  transition: 0.4s;
-}
-
-.profile:hover {
-  transform: scale(1.05) rotate(2deg);
 }
 
 /* ===== NAME ===== */
 .sidebar h2 {
-  font-size: 30px;   /* 🔥 BIGGER NAME */
+  font-size: 32px;
   margin-top: 15px;
 
   background: linear-gradient(90deg, #a855f7, #ec4899);
   -webkit-background-clip: text;
-  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -118,16 +162,11 @@ p {
   background: rgba(168,85,247,0.1);
 }
 
-/* ===== INFO ===== */
-.info p {
-  font-size: 15px;
-  color: #bbb;
-}
-
 /* ===== MAIN ===== */
 .main {
   width: 75%;
   padding: 40px;
+  margin-top: 0; /* 🔥 FIX */
 }
 
 /* ===== NAVBAR ===== */
@@ -141,11 +180,9 @@ p {
   color: white;
   text-decoration: none;
   font-size: 16px;
-
   position: relative;
 }
 
-/* underline animation */
 .navbar a::after {
   content: "";
   position: absolute;
@@ -178,7 +215,7 @@ p {
 }
 
 .card:hover, .skill-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-6px) scale(1.02);
   box-shadow: 0 0 25px var(--primary);
 }
 
@@ -201,13 +238,11 @@ p {
   border-radius: 20px;
 
   font-size: 13px;
-  transition: 0.3s;
 }
 
 .tech-stack span:hover {
   background: var(--primary);
   color: white;
-  box-shadow: 0 0 10px var(--primary);
 }
 
 /* ===== MODAL ===== */
@@ -221,21 +256,22 @@ p {
 /* ===== CURSOR ===== */
 .cursor {
   position: fixed;
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   background: var(--primary);
   border-radius: 50%;
   pointer-events: none;
+  z-index: 1000;
 }
 
 .cursor-ring {
   position: fixed;
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
   border: 2px solid var(--primary);
   border-radius: 50%;
   pointer-events: none;
-  box-shadow: 0 0 20px var(--primary);
+  z-index: 999;
 }
 
 /* ===== MOBILE ===== */
@@ -273,17 +309,8 @@ p {
     font-size: 14px;
   }
 
-  h1 {
-    font-size: 28px;
-  }
-
-  h2 {
-    font-size: 24px;
-  }
-
-  p {
-    font-size: 15px;
-  }
+  h1 { font-size: 30px; }
+  h2 { font-size: 24px; }
 
   .profile {
     width: 120px;
@@ -292,9 +319,5 @@ p {
 
   .grid {
     grid-template-columns: 1fr;
-  }
-
-  .card, .skill-card {
-    padding: 18px;
   }
 }
